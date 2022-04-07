@@ -12,8 +12,8 @@ manhatan distance to reach pt2 to pt1 was-->abs(x2-x1)+abs(y2-y1)
 
 public class manhatanDist {
     public static void main(String[] args) {
-        int x[] = { 1, 4, 8, 11,52 };
-        int y[] = { 5, 6, 5, 3 ,98};
+        int x[] = {1,-1,3,2};
+        int y[] = { 5, 6, 5, 3};
         int n=x.length;
         //caluclation of manhatan distance
         Arrays.sort(x);
@@ -38,6 +38,23 @@ public class manhatanDist {
             totalDist+=yTotal-(n-1-i)*y[i];
         }
 
-        System.out.print(totalDist);
+        System.out.println("old calc "+totalDist);
+
+        System.out.println("new calc "+caluclateManhattanDistance(x, y));
+    }
+
+    static int caluclateManhattanDistance(int x[],int y[]){
+
+        int xsum=0,ysum=0;
+        Arrays.sort(x);
+        Arrays.sort(y);
+
+        int n = x.length;
+        for(int i=0;i<n;i++){
+            xsum+=i*x[i]-(n-i-1)*x[i];
+            ysum+=i*y[i]-(n-i-1)*y[i];
+        }
+
+        return xsum+ysum;
     }
 }
